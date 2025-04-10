@@ -23,9 +23,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='pl'>
+    <html lang='pl' className='scroll-smooth'>
       <body
-        className={`${inter.variable} ${playfair.variable} dark antialiased`}
+        className={`${inter.variable} ${playfair.variable} m-0 h-screen w-screen antialiased`}
       >
         {children}
       </body>
