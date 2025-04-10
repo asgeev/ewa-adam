@@ -7,7 +7,9 @@ type SectionProps = {
 
 export default function Section(props: SectionProps) {
   return (
-    <section className={`${cn(props.className)} h-full w-full snap-start`}>
+    <section
+      className={`${cn(props.className)} flex h-full w-full snap-start items-center justify-center`}
+    >
       {props.children}
     </section>
   );
