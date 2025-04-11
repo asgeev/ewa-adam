@@ -1,6 +1,7 @@
 import Section from '@/components/section';
 import Main from '@/features/main/components/main';
 import { Countdown } from '@/features/countdown/components/countdown';
+import Location from '@/features/location/components/location';
 
 export default function Home() {
   return (
@@ -10,6 +11,9 @@ export default function Home() {
       </Section>
       <Section>
         <Countdown />
+      </Section>
+      <Section>
+        <Location />
       </Section>
     </div>
   );
