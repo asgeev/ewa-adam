@@ -1,5 +1,6 @@
 import Section from '@/components/section';
 import Main from '@/features/main/components/main';
+import { Countdown } from '@/features/countdown/components/countdown';
 
 export default function Home() {
   return (
@@ -7,7 +8,9 @@ export default function Home() {
       <Section className='bg-background'>
         <Main />
       </Section>
-      <Section className='bg-blue-400'></Section>
+      <Section>
+        <Countdown />
+      </Section>
     </div>
   );
 }
