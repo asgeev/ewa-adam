@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { Divider } from '@/components/divider';
 
 // Utility to calculate time remaining
 const calculateTimeRemaining = (endDate: Date) => {
@@ -47,7 +48,11 @@ export const Countdown = () => {
   if (timeRemaining.isExpired) {
     return (
       <div className='text-accent flex h-full w-full items-center justify-center bg-[#18181B]'>
-        <p className='font-playfair text-3xl'>Czas minął! 🎉</p>
+        <div className='font-playfair space-y-6 text-center'>
+          <p className='mb-20 text-8xl'>🎉</p>
+          <p className='text-4xl font-bold'>Zaczynamy imprezę!</p>
+          <p className='text-muted-foreground text-2xl'>Bawcie się dobrze!</p>
+        </div>
       </div>
     );
   }
@@ -56,10 +61,13 @@ export const Countdown = () => {
     <div className='text-accent flex h-full w-full items-center justify-center bg-[#18181B]'>
       <div className='font-playfair text-center'>
         <h1 className='text-3xl'>Odliczaj razem z nami!</h1>
-        <div className='flex flex-col gap-8 pt-16'>
+        <div className='flex flex-col items-center gap-6 pt-16'>
           <CountdownItem value={timeRemaining.days} label='Dni' />
+          <Divider color='white' />
           <CountdownItem value={timeRemaining.hours} label='Godziny' />
+          <Divider color='white' />
           <CountdownItem value={timeRemaining.minutes} label='Minuty' />
+          <Divider color='white' />
           <CountdownItem value={timeRemaining.seconds} label='Sekundy' />
         </div>
       </div>
