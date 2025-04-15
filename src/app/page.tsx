@@ -1,6 +1,7 @@
 import Section from '@/components/section';
 import Main from '@/features/main/components/main';
 import { Countdown } from '@/features/countdown/components/countdown';
+import Contact from '@/features/contact/components/contact';
 import Location from '@/features/location/components/location';
 
 export default function Home() {
@@ -14,6 +15,9 @@ export default function Home() {
       </Section>
       <Section>
         <Location />
+      </Section>
+      <Section className='bg-[#024C3B]'>
+        <Contact />
       </Section>
     </div>
   );
