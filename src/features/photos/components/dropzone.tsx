@@ -2,40 +2,27 @@
 
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Upload } from 'lucide-react';
 
 export default function Dropzone() {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     console.log(acceptedFiles);
     // Do something with the files
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+
+  const { getRootProps, getInputProps } = useDropzone({
+    multiple: false,
     onDrop,
     disabled: true,
   });
 
   return (
-    <div
-      {...getRootProps()}
-      className='rounded-md border-1 border-dashed border-gray-400 py-6'
-    >
+    <div {...getRootProps()}>
       <input {...getInputProps()} className='hidden' />
-      {isDragActive ? (
-        <p>Upuść pliku tutaj ...</p>
-      ) : (
-        <div className='flex flex-col items-center justify-center gap-6'>
-          <Image
-            src='/cloud-upload.svg'
-            alt='upload'
-            width={80}
-            height={80}
-            className='stroke-red-50'
-          />
-          <p className='text-muted-foreground font-inter text-center text-sm'>
-            Naciśnij na to pole aby przesłać zdjęcie
-          </p>
-        </div>
-      )}
+      <Button className='w-full' disabled>
+        Prześlij zdjęcie <Upload />
+      </Button>
     </div>
   );
 }
