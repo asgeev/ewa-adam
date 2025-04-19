@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Divider } from '@/components/divider';
+import { Clock } from 'lucide-react';
 
 // Utility to calculate time remaining
 const calculateTimeRemaining = (endDate: Date) => {
@@ -47,7 +48,7 @@ export const Countdown = () => {
 
   if (timeRemaining.isExpired) {
     return (
-      <div className='text-accent flex h-full w-full items-center justify-center bg-[#18181B]'>
+      <div className='text-accent flex min-h-svh items-center justify-center bg-[#18181B]'>
         <div className='font-playfair space-y-6 text-center'>
           <p className='mb-20 text-8xl'>🎉</p>
           <p className='text-4xl font-bold'>Zaczynamy imprezę!</p>
@@ -58,17 +59,24 @@ export const Countdown = () => {
   }
 
   return (
-    <div className='text-accent flex h-full w-full items-center justify-center bg-[#18181B]'>
-      <div className='font-playfair text-center'>
-        <h1 className='text-3xl'>Odliczaj razem z nami!</h1>
-        <div className='flex flex-col items-center gap-6 pt-16'>
-          <CountdownItem value={timeRemaining.days} label='Dni' />
-          <Divider color='white' />
-          <CountdownItem value={timeRemaining.hours} label='Godziny' />
-          <Divider color='white' />
-          <CountdownItem value={timeRemaining.minutes} label='Minuty' />
-          <Divider color='white' />
-          <CountdownItem value={timeRemaining.seconds} label='Sekundy' />
+    <div className='text-accent flex bg-[#18181B] py-10'>
+      <div className='font-playfair mx-auto max-w-md text-center'>
+        <h1 className='mb-4 text-3xl'>Odliczaj razem z nami!</h1>
+        <Divider color='white' variant='vertical' className='mx-auto my-8' />
+
+        <div className='mx-auto flex flex-col justify-center'>
+          <div className='mx-auto my-8'>
+            <Clock size={60} />
+          </div>
+          <div className='mx-auto mt-6 flex items-center gap-4'>
+            <CountdownItem value={timeRemaining.days} label='Dni' />
+            {':'}
+            <CountdownItem value={timeRemaining.hours} label='Godziny' />
+            {':'}
+            <CountdownItem value={timeRemaining.minutes} label='Minuty' />
+            {':'}
+            <CountdownItem value={timeRemaining.seconds} label='Sekundy' />
+          </div>
         </div>
       </div>
     </div>

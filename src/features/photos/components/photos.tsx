@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 
 export default function Photos() {
   return (
-    <div className='container mx-auto h-full max-w-md p-8'>
+    <div className='container mx-auto min-h-svh max-w-md px-8 py-10'>
       <div>
         <h1 className='font-playfair text-center text-2xl'>
           Podziel się swoim zdjęciem!
