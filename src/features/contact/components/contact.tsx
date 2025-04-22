@@ -1,6 +1,7 @@
 import { ContactItem } from '@/features/contact/components/contact-item';
 import Image from 'next/image';
 import { Divider } from '@/components/divider';
+import {contact} from "@/features/contact/lib/utils";
 
 export default function Contact() {
   return (
@@ -12,15 +13,15 @@ export default function Contact() {
             <div className='flex justify-between'>
               <ContactItem
                 name={'Ewa'}
-                number={'696 969 696'}
-                faceboook={'https://www.facebook.com/'}
-                instagram={'https://www.instagram.com/'}
+                number={contact.ewa.phone || '696 969 696'}
+                faceboook={contact.ewa.facebook || 'https://www.facebook.com/'}
+                instagram={contact.ewa.instagram || 'https://www.instagram.com/'}
               />
               <ContactItem
-                name={'Ewa'}
-                number={'696 969 696'}
-                faceboook={'https://www.facebook.com/'}
-                instagram={'https://www.instagram.com/'}
+                name={'Ola'}
+                number={contact.ola.phone || '696 969 696'}
+                faceboook={contact.ola.facebook || 'https://www.facebook.com/'}
+                instagram={contact.ola.instagram || 'https://www.instagram.com/'}
                 right
               />
             </div>
@@ -32,16 +33,16 @@ export default function Contact() {
 
             <div className='flex justify-between'>
               <ContactItem
-                name={'Ewa'}
-                number={'696 969 696'}
-                faceboook={'https://www.facebook.com/'}
-                instagram={'https://www.instagram.com/'}
+                name={'Adam'}
+                number={contact.adam.phone || '696 969 696'}
+                faceboook={contact.adam.facebook || 'https://www.facebook.com/'}
+                instagram={contact.adam.instagram || 'https://www.instagram.com/'}
               />
               <ContactItem
-                name={'Ewa'}
-                number={'696 969 696'}
-                faceboook={'https://www.facebook.com/'}
-                instagram={'https://www.instagram.com/'}
+                name={'Jarek'}
+                number={contact.jarek.phone || '696 969 696'}
+                faceboook={contact.jarek.facebook || 'https://www.facebook.com/'}
+                instagram={contact.jarek.instagram || 'https://www.instagram.com/'}
                 right
               />
             </div>
