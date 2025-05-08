@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import Image from 'next/image';
 
 // Utility to calculate time remaining
@@ -32,7 +32,7 @@ const CountdownItem: React.FC<CountdownItemProps> = ({value, label}) => (
 
 // Main countdown component
 export const Countdown = () => {
-    const targetDate = new Date('2025-08-29T16:00:00'); // Replace with your target date
+    const targetDate = useMemo(() => new Date('2025-08-29T16:00:00'), []);
     const [timeRemaining, setTimeRemaining] = useState(
         calculateTimeRemaining(targetDate),
     );
