@@ -1,28 +1,26 @@
-import { Divider } from '@/components/divider';
+import Image from 'next/image';
+import {Button} from "@/components/ui/button";
+import {ArrowRight} from "lucide-react";
+import Link from "next/link";
 
 export default function Location() {
-  return (
-    <div className='mx-auto min-h-svh max-w-md py-10'>
-      <div className='font-playfair space-y-2 text-center text-2xl md:text-3xl'>
-        <p>Dwór Anna</p>
-        <p>ul. Lubelska 3</p>
-        <p>21-003</p>
-        <p>
-          Jakubowice <br />
-          Konińskie-Kolonia
-        </p>
-      </div>
-      <Divider color='black' className='mx-auto my-6' />
-      <div className='mx-8 h-[60svh]'>
-        <iframe
-          src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2493.7353512156114!2d22.530573077599836!3d51.3159931246669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47225a54eb441e3b%3A0x6e6b6c64cee1549d!2sDw%C3%B3r%20Anna!5e0!3m2!1spl!2spl!4v1744407325877!5m2!1spl!2spl'
-          width='100%'
-          height='100%'
-          allowFullScreen
-          loading='lazy'
-          referrerPolicy='no-referrer-when-downgrade'
-        ></iframe>
-      </div>
-    </div>
-  );
+    return (
+        <div className='mx-auto max-w-sm px-2 py-10'>
+            <div className='rounded-md border border-border shadow-md'>
+                <div className='aspect-video relative w-full max-h-40'>
+                    <Image src="/pic.jpg" alt="pic" fill className='rounded-t-md' objectFit='cover' loading='lazy'/>
+                </div>
+                <div className='p-4'>
+                    <div>
+                        <p className='font-bold text-lg'>Dwór Anna</p>
+                        <p className='text-muted-foreground text-sm'>ul. Lubelska 3</p>
+                        <p className='text-muted-foreground text-sm'>21-003, Jakubowice Konińskie-Kolonia</p>
+                    </div>
+                    <Button className='w-full mt-8' asChild><Link href='https://maps.app.goo.gl/VpRd8NThNthcXqtL6'
+                                                                  target='_blank'>Zobacz
+                        na mapie <ArrowRight/></Link></Button>
+                </div>
+            </div>
+        </div>
+    );
 }
