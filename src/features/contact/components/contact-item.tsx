@@ -17,21 +17,21 @@ export const ContactItem = (props: ContactItemProps) => {
     const icon = team === 'Bride' ? '/bride.png' : '/groom.png'
 
     return (
-        <div className='border border-border rounded-md p-4'>
-            <div className='flex items-center justify-between font-medium'>
-                <p className='text-muted-foreground text-xs flex items-center gap-0.5'>
-                    {team} Team
-                </p>
+        <div className='border border-border rounded-md p-4 shadow'>
+            <div className='flex font-medium'>
+                <div className={'flex-1'}>
+                    <p className='text-muted-foreground text-xs flex items-center gap-0.5'>
+                        {team} Team
+                    </p>
+                    <p className='text-xl font-semibold'>
+                        {name}
+                    </p>
+                </div>
                 <div className='border border-border rounded-full'>
                     <Image src={icon} alt='facebook' height={30} width={30} className='invert m-1.5'/>
                 </div>
             </div>
-            <div className='mt-1'>
-                <p className='font-playfair text-2xl font-bold'>
-                    {name}
-                </p>
-            </div>
-            <div className='flex gap-1 mt-2'>
+            <div className='flex gap-1 mt-4'>
                 <Button variant='outline' size='sm' asChild><Link href={`tel:${number}`}
                                                                   target='_blank'><Phone/></Link></Button>
                 <Button variant='outline' size='sm' className='flex-1' asChild><Link href={facebook}

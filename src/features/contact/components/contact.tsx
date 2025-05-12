@@ -1,6 +1,5 @@
 import {ContactItem} from '@/features/contact/components/contact-item';
 import {contact} from "@/features/contact/lib/utils";
-import {Divider} from "@/components/divider";
 
 export default function Contact() {
     const phone = '111 111 111';
@@ -9,10 +8,9 @@ export default function Contact() {
 
     return (
         <div>
-            <div className='mx-auto max-w-sm px-2 py-10'>
-                <div className='flex flex-col items-center justify-between'>
-                    <p className=' text-2xl font-playfair'>Skontaktuj się z nami!</p>
-                    <Divider color='black' className='mx-auto my-8'/>
+            <div className='mx-auto max-w-sm px-2'>
+                <p className='mb-2 text-lg font-bold'>Kontakt</p>
+                <div className='flex flex-col items-center justify-between mt-6'>
                     <div className='flex flex-col gap-4 w-full'>
                         <ContactItem
                             name={'Ewa'}
