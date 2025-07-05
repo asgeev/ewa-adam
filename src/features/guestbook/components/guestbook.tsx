@@ -1,9 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { GuestBook } from '@/features/guestbook/libs/types';
-import { Button } from '@/components/ui/button';
-import { Plus } from 'lucide-react';
 import GuestBookDrawer from '@/features/guestbook/components/guest-book-drawer';
+import AddGuestBookDrawer from '@/features/guestbook/components/add-guest-book-drawer';
 
 export default function Guestbook() {
   const greetings: GuestBook[] = [];
@@ -20,9 +19,7 @@ export default function Guestbook() {
         />
         <div className='flex items-center justify-between'>
           <h1 className='text-lg font-bold'>e-Księga Gości</h1>
-          <Button size='sm' variant='outline' className='rounded-full'>
-            Dodaj <Plus />
-          </Button>
+          <AddGuestBookDrawer />
         </div>
         <div className='mt-8'>
           <p className='font-bold'>Najnowsze:</p>
