@@ -7,7 +7,7 @@ import type { Guestbook } from '@prisma/client';
 
 export default async function Guestbook() {
   const guestbook = await prisma.guestbook.findMany();
-  
+
   return (
     <>
       <div className='mx-auto max-w-sm px-2 py-10'>
@@ -27,14 +27,12 @@ export default async function Guestbook() {
         </div>
         <div className='mt-8 flex flex-col gap-6'>
           {guestbook?.map((g: Guestbook) => (
-            <div>
-              <GuestBookDrawer
-                key={g.id}
-                content={g.content ?? ''}
-                createdAt={g.createdAt}
-                author={g.author}
-              />
-            </div>
+            <GuestBookDrawer
+              key={g.id}
+              content={g.content ?? ''}
+              createdAt={g.createdAt}
+              author={g.author}
+            />
           ))}
         </div>
       </div>
