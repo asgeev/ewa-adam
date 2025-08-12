@@ -13,21 +13,9 @@ import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Textarea } from '@/components/ui/textarea';
-
-const formSchema = z.object({
-  author: z
-    .string()
-    .min(3, {
-      message: 'Minimum 3 znaki',
-    })
-    .max(100, { message: 'Maksimum 100 znaków' }),
-  content: z
-    .string()
-    .min(3, {
-      message: 'Minimum 3 znaki',
-    })
-    .max(1000, { message: 'Max 1000 znaków' }),
-});
+import { formSchema } from '@/features/guestbook/libs/schema';
+import createGuestbook from '@/features/guestbook/actions/create-guestbook';
+import { toast } from 'sonner';
 
 export default function GuestbookForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -38,11 +26,25 @@ export default function GuestbookForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const validatedFields = formSchema.safeParse(values);
+
+    if (!validatedFields.success) {
+      console.log(validatedFields.error);
+      return;
+    }
+
+    try {
+      await createGuestbook(values);
+      toast('Dziękujemy! Życzenia zostały dodane');
+      form.reset();
+    } catch (err) {
+      console.error(
+        'Submit form error [submit - create guestbook] - Error:',
+        err,
+      );
+      toast('Wystapił błąd! Spróbuj ponownie później');
+    }
   }
 
   return (
