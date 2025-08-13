@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/drawer';
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import type { Guestbook } from '@prisma/client';
 
 const Date = ({ date }: { date: Date }) => {
   if (!date) return null;
@@ -28,35 +27,30 @@ const Date = ({ date }: { date: Date }) => {
   );
 };
 
-type GuestBookItem = Omit<Guestbook, 'id'>;
+type GuestbookItem = {
+  author: string;
+  createdAt: Date;
+  content: string;
+};
 
-interface DrawerGuestbookProps extends GuestBookItem {
-  showDate?: boolean;
-}
-
-export default function GuestBookItem({
-  showDate = true,
-  ...restProps
-}: DrawerGuestbookProps) {
-  const item = restProps;
+export default function GuestBookItem(props: GuestbookItem) {
+  const { content, author, createdAt } = props;
 
   return (
     <Drawer>
       <DrawerTrigger>
         <div className={'space-y-1 text-left text-sm'}>
           <div className='flex items-center justify-between'>
-            <p className='line-clamp-1 font-semibold underline'>
-              {item.author}
-            </p>
+            <p className='line-clamp-1 font-semibold underline'>{author}</p>
           </div>
-          <p className='text-muted-foreground line-clamp-2'>{item.content}</p>
+          <p className='text-muted-foreground line-clamp-2'>{content}</p>
         </div>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
-          <Date date={item.createdAt} />
-          <DrawerTitle>{item.author}</DrawerTitle>
-          <DrawerDescription>{item.content}</DrawerDescription>
+          <Date date={createdAt} />
+          <DrawerTitle>{author}</DrawerTitle>
+          <DrawerDescription>{content}</DrawerDescription>
         </DrawerHeader>
         <DrawerFooter>
           <DrawerClose asChild>

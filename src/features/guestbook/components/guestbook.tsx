@@ -30,7 +30,7 @@ export default async function Guestbook() {
         <div className='mt-8'>
           <p className='font-bold'>Najnowsze:</p>
         </div>
-        <GuestbookList guestbook={guestbook} showDate={false} />
+        <GuestbookList guestbook={guestbook} />
 
         <Button variant='link' asChild className='float-right mt-4'>
           <Link href={'/guestbook'}>
