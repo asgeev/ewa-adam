@@ -32,6 +32,9 @@ export default function RootLayout({
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
         {children}
         <Toaster position='top-right' />
+        <p className='text-muted-foreground my-4 text-center text-xs'>
+          © ewa-adam.pl, 2025 All rights reserved.
+        </p>
       </body>
     </html>
   );

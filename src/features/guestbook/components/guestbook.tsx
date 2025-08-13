@@ -15,7 +15,7 @@ export default async function Guestbook() {
 
   return (
     <>
-      <div className='mx-auto max-w-sm px-2 py-10'>
+      <div className='mx-auto mt-10 mb-6 max-w-sm px-2'>
         <Image
           src='/wedding-rings.png'
           alt='rings'
@@ -31,13 +31,19 @@ export default async function Guestbook() {
           <p className='font-bold'>Najnowsze:</p>
         </div>
         <GuestbookList guestbook={guestbook} />
-
-        <Button variant='link' asChild className='float-right mt-4'>
-          <Link href={'/guestbook'}>
-            Zobacz wiecej
-            <ArrowRight />
-          </Link>
-        </Button>
+        <div className='my-4'>
+          <Button
+            variant='outline'
+            size='sm'
+            asChild
+            className='w-full rounded-full'
+          >
+            <Link href={'/guestbook'}>
+              Zobacz wiecej
+              <ArrowRight />
+            </Link>
+          </Button>
+        </div>
       </div>
     </>
   );
