@@ -14,26 +14,30 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Textarea } from '@/components/ui/textarea';
 import { formSchema } from '@/features/guestbook/libs/schema';
-import createGuestbook from '@/features/guestbook/actions/create-guestbook';
 import { toast } from 'sonner';
+import { useState } from 'react';
+import createGuestbook from '@/features/guestbook/actions/create-guestbook';
+import { LoaderCircle } from 'lucide-react';
 
 export default function GuestbookForm() {
+  const [loading, setLoading] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       author: '',
       content: '',
     },
+    disabled: loading,
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const validatedFields = formSchema.safeParse(values);
-
     if (!validatedFields.success) {
       console.log(validatedFields.error);
       return;
     }
-
+    setLoading(true);
     try {
       await createGuestbook(values);
       toast('Dziękujemy! Życzenia zostały dodane');
@@ -44,6 +48,8 @@ export default function GuestbookForm() {
         err,
       );
       toast('Wystapił błąd! Spróbuj ponownie później');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -79,8 +85,15 @@ export default function GuestbookForm() {
             </FormItem>
           )}
         />
-        <Button className='mt-4 w-full' type='submit'>
-          Prześlij
+        <Button className='mt-4 w-full' type='submit' disabled={loading}>
+          {loading ? (
+            <>
+              <LoaderCircle className='mr-2 h-5 w-5 animate-spin' />
+              Przesyłanie
+            </>
+          ) : (
+            'Prześlij'
+          )}
         </Button>
       </form>
     </Form>
