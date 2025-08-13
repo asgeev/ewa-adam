@@ -16,6 +16,10 @@ const playfair = Playfair({
 export const metadata: Metadata = {
   title: 'Ewa-Adam',
   description: 'Strona ślubna Ewy i Adama',
+  other: {
+    viewport:
+      'width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, viewport-fit=cover',
+  },
 };
 
 export default function RootLayout({
