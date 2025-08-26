@@ -16,6 +16,7 @@ const envSchema = z.object({
   POSTGRES_URL: z.string().optional(),
   PRISMA_DATABASE_URL: z.string().optional(),
   DATABASE_URL: z.string().optional(),
+  DRIVE_URL: z.string().optional(),
   NODE_ENV: z
     .union([
       z.literal('development'),
