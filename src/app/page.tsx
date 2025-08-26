@@ -5,6 +5,8 @@ import Location from '@/features/location/components/location';
 import Photos from '@/features/photos/components/photos';
 import Guestbook from '@/features/guestbook/components/guestbook';
 
+export const revalidate = 60;
+
 export default function Home() {
   return (
     <div>
