@@ -5,6 +5,8 @@ import prisma from '@/lib/prisma';
 import GuestbookList from '@/features/guestbook/components/guestbook-list';
 import Link from 'next/link';
 
+export const revalidate = 60;
+
 export default async function GuestbookPage() {
   const guestbook = await prisma.guestbook.findMany({
     orderBy: { id: 'desc' },
